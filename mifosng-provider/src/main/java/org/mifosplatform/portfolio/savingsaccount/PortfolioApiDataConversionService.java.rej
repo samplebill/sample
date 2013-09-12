@@ -1,0 +1,60 @@
+diff a/mifosng-provider/src/main/java/org/mifosplatform/portfolio/savingsaccount/PortfolioApiDataConversionService.java b/mifosng-provider/src/main/java/org/mifosplatform/portfolio/savingsaccount/PortfolioApiDataConversionService.java	(rejected hunks)
+@@ -1,8 +1,18 @@
+ package org.mifosplatform.portfolio.savingsaccount;
+ 
++import org.mifosplatform.portfolio.adjustment.commands.AdjustmentCommand;
++import org.mifosplatform.portfolio.billingcycle.command.BillingCycleCommand;
++import org.mifosplatform.portfolio.charge.commands.ChargeCodeCommand;
+ import org.mifosplatform.portfolio.client.data.ClientData;
++import org.mifosplatform.portfolio.discountmaster.commands.DiscountMasterCommand;
+ import org.mifosplatform.portfolio.group.command.GroupCommand;
+ import org.mifosplatform.portfolio.loanaccount.gaurantor.command.GuarantorCommand;
++import org.mifosplatform.portfolio.order.command.OrdersCommand;
++import org.mifosplatform.portfolio.payment.command.Paymentcommand;
++import org.mifosplatform.portfolio.paymodes.commands.PaymodeCommand;
++import org.mifosplatform.portfolio.payterms.commands.PaytermsCommand;
++import org.mifosplatform.portfolio.plan.commands.PlansCommand;
++import org.mifosplatform.portfolio.pricing.commands.PricingCommand;
+ import org.mifosplatform.portfolio.savingsaccount.command.SavingAccountApprovalCommand;
+ import org.mifosplatform.portfolio.savingsaccount.command.SavingAccountCommand;
+ import org.mifosplatform.portfolio.savingsaccount.command.SavingAccountDepositCommand;
+@@ -47,4 +62,38 @@ public interface PortfolioApiDataConversionService {
+     SavingAccountDepositCommand convertJsonToSavingAccountDepositCommand(Long accountId, String json);
+ 
+     SavingAccountWithdrawalCommand convertJsonToSavingAccountWithdrawalCommand(Long accountId, String jsonRequestBody);
++    AdjustmentCommand convertJsonToAdjustmentCommand(Long resourceIdentifier, String json);
++
++	BillingCycleCommand convertJsonToBillingCycleCommand(
++			Long resourceIdentifier, String json);
++
++	ChargeCodeCommand convertJsonToChargeCodeCommand(Long resourceIdentifier,String json);
++
++	DiscountMasterCommand convertJsonToDiscountMasterCommand(
++			Long resourceIdentifier, String json);
++
++	OrdersCommand convertJsonToOrderCommand(Object resourceIdentifier,Long client_id, String json);
++
++	Paymentcommand convertJsonToPaymentCommand(Long resourceIdentifier,
++			String json);
++
++	PaymodeCommand convertJsonToPaymodeCommand(Long resourceIdentifier,
++			String json);
++
++	PaytermsCommand convertJsonToPaytermsCommand(Long resourceIdentifier,
++			String json);
++
++	PlansCommand convertJsonToPlansCommand(Long resourceIdentifier, String json);
++
++	PricingCommand convertJsonToPricingCommand(Long resourceIdentifier,String json);
++
++	ServiceMasterCommand convertJsonToServiceMasterCommand(Long resourceIdentifier, String json);
++
++	ServicesCommand convertJsonToServiceCommand(Long resourceIdentifier,String json);
++
++	SubscriptionCommand convertJsonToSubscriptionCommand(Long resourceIdentifier, String json);
++
++	TaxMappingRateCommand convertJsonToTaxMappingRateCommand(Long resourceIdentifier, String json);
++
++	TaxMasterCommand convertJsonToTaxMasterCommand(Long resourceIdentifier,String json);
+ }
+\ No newline at end of file

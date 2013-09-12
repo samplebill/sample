@@ -1,0 +1,48 @@
+diff a/mifosng-provider/src/main/java/org/mifosplatform/portfolio/savingsaccount/GoogleGsonPortfolioApiJsonSerializerService.java b/mifosng-provider/src/main/java/org/mifosplatform/portfolio/savingsaccount/GoogleGsonPortfolioApiJsonSerializerService.java	(rejected hunks)
+@@ -3,15 +3,20 @@ package org.mifosplatform.portfolio.savingsaccount;
+ import java.util.Arrays;
+ import java.util.Collection;
+ import java.util.HashSet;
++import java.util.List;
+ import java.util.Set;
+ 
+ import org.mifosplatform.infrastructure.core.serialization.GoogleGsonSerializerHelper;
++import org.mifosplatform.portfolio.billingcycle.data.BillingCycleData;
+ import org.mifosplatform.portfolio.loanaccount.gaurantor.data.GuarantorData;
++import org.mifosplatform.portfolio.plan.data.PlanData;
++import org.mifosplatform.portfolio.plan.data.ServiceData;
+ import org.mifosplatform.portfolio.savingsaccount.data.SavingAccountData;
+ import org.mifosplatform.portfolio.savingsaccount.data.SavingScheduleData;
+ import org.mifosplatform.portfolio.savingsaccountproduct.data.SavingProductData;
+ import org.mifosplatform.portfolio.savingsdepositaccount.data.DepositAccountData;
+ import org.mifosplatform.portfolio.savingsdepositproduct.data.DepositProductData;
++import org.mifosplatform.portfolio.servicemaster.data.SericeMasterOptionsData;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Service;
+ 
+@@ -56,12 +61,24 @@ public class GoogleGsonPortfolioApiJsonSerializerService implements PortfolioApi
+             "lockinPeriod", "lockinPeriodType", "productOptions", "currencyOptions", "savingsProductTypeOptions", "tenureTypeOptions",
+             "savingFrequencyOptions", "savingsInterestTypeOptions", "lockinPeriodTypeOptions", "interestCalculationOptions","permissions","savingScheduleDatas",
+             "dueAmount", "savingScheduleData", "transactions","interestPostEvery","interestPostFrequency"));
++    
++    private static final Set<String> PLAN_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("id", "planCode", "plan_description", "startDate",
++            "endDate", "status", "service_code", "service_description", "charge_code", "charge_description","servicedata","contractPeriod",
++            "service_type", "charge_type", "allowedtypes","selectedservice","bill_rule","billiingcycle","servicedata","services","statusname","planstatus"));
+ 
+     // guarantors
+     private static final Set<String> GUARANTOR_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("externalGuarantor", "existingClientId",
+             "firstname", "lastname", "addressLine1", "addressLine2", "city", "state", "zip", "country", "mobileNumber", "housePhoneNumber",
+             "comment", "dob"));
+-
++    
++    private static final Set<String> BILLINGCYCLE_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("id",
++            "billing_code","description","frequency","every","day_name","day_num","allowedtypes"));
++    
++    private static final Set<String> SERVICE_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("id","serviceCode","serviceDescription","serviceType","serviceData"));
++
++    
++	private static final Set<String> SERVICE_MASTER_DATA_PARAMETERS_TEMPLETE=new HashSet<String>(Arrays.asList("serviceType","categoryType","serviceMasterOptions"));
++    
+     private static final Set<String> SAVING_SCHEDULE_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("periods", "cumulativeDepositDue"));
+ 
+     private final GoogleGsonSerializerHelper helper;

@@ -1,0 +1,10 @@
+diff a/mifosng-provider/src/main/java/org/mifosplatform/infrastructure/dataqueries/service/ReadWriteNonCoreDataServiceImpl.java b/mifosng-provider/src/main/java/org/mifosplatform/infrastructure/dataqueries/service/ReadWriteNonCoreDataServiceImpl.java	(rejected hunks)
+@@ -531,6 +531,8 @@ public class ReadWriteNonCoreDataServiceImpl implements
+ 
+ 				if (rsch.getColumnType().equalsIgnoreCase("int"))
+ 					addCodesValueIfNecessary(rsch, "_cd");
++				if (rsch.getColumnType().equalsIgnoreCase("datetime"))
++					addCodesValueIfNecessary(rsch, "_cd");
+ 
+ 				rsch.setColumnDisplayType();
+ 

@@ -1,0 +1,18 @@
+diff a/mifosng-provider/src/main/java/org/mifosplatform/portfolio/client/api/ClientsApiResource.java b/mifosng-provider/src/main/java/org/mifosplatform/portfolio/client/api/ClientsApiResource.java	(rejected hunks)
+@@ -37,6 +37,7 @@ import org.mifosplatform.organisation.office.service.OfficeReadPlatformService;
+ import org.mifosplatform.portfolio.client.data.ClientAccountSummaryCollectionData;
+ import org.mifosplatform.portfolio.client.data.ClientData;
+ import org.mifosplatform.portfolio.client.service.ClientReadPlatformService;
++import org.mifosplatform.portfolio.order.data.OrderData;
+ import org.mifosplatform.portfolio.savingsaccount.PortfolioApiDataConversionService;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.context.annotation.Scope;
+@@ -48,7 +49,7 @@ import org.springframework.stereotype.Component;
+ public class ClientsApiResource {
+ 
+     private final Set<String> CLIENT_DATA_PARAMETERS = new HashSet<String>(Arrays.asList("id", "accountNo", "officeId", "officeName", "externalId",
+-            "firstname", "middlename", "lastname", "fullname", "joinedDate", "displayName", "clientOrBusinessName", "allowedOffices", "imagePresent"));
++            "firstname", "middlename", "lastname", "fullname", "joinedDate", "displayName", "clientOrBusinessName", "allowedOffices", "imagePresent","balance"));
+ 
+     private final PlatformSecurityContext context;
+     private final ClientReadPlatformService clientReadPlatformService;
